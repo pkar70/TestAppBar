@@ -1,0 +1,183 @@
+﻿<Page
+    x:Class="testAppBar.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:testAppBar"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+
+            <RowDefinition Height="Auto"/>
+
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <!-- Padding="0,0,0,50" - to daje odstep pomiedzy tekstem 'zarazpodtym' oraz statusbarem-->
+            <TextBlock Text="Hello, world !" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Top" />
+            <TextBlock Text=" " HorizontalAlignment="Right" VerticalAlignment="Top" Name="uiCounter"/>
+            <WebView Name="uiWeb" Margin="5,50,5,20" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+            <Button Content="Pressnij krotkie" Click="uiClicked" HorizontalAlignment="Left" VerticalAlignment="Bottom"  />
+            <Button Content="dlugie" Click="uiClicked1" HorizontalAlignment="Right" VerticalAlignment="Bottom"  />
+        </Grid>
+        <TextBlock Grid.Row="1" Text="Ponizej CommandBar z poprawkami" Margin="5,5,5,0"/>
+        <CommandBar Grid.Row="2" ClosedDisplayMode="Compact" >
+            <CommandBar.Content>
+                <TextBlock Text="Kontent" Margin="20,10,0,10" />
+            </CommandBar.Content>
+            <AppBarSeparator/>
+            <AppBarButton Label="Wczytaj-Icon" >
+                <AppBarButton.Icon>
+                    <FontIcon Glyph="&#xE14A;" FontFamily="ms-appx:///Assets/Fonts/winjs-symbols.ttf#Symbols" />
+                </AppBarButton.Icon>
+            </AppBarButton>
+            <AppBarButton Label="Kalen-Symbol" Icon="Calendar" >
+                <AppBarButton.Flyout>
+                    <Flyout >
+                        <DatePicker />
+                    </Flyout>
+                </AppBarButton.Flyout>
+            </AppBarButton>
+            <AppBarSeparator/>
+            <AppBarToggleButton Label="Wydarzenia" >
+                <AppBarToggleButton.Icon>
+                    <FontIcon Glyph="&#xE12B;" FontFamily="ms-appx:///Assets/Fonts/winjs-symbols.ttf#Symbols" />
+                </AppBarToggleButton.Icon>
+            </AppBarToggleButton>
+
+            <AppBarToggleButton Icon="OutlineStar" Label="Swieta" />
+            <AppBarToggleButton Label="Urodziny" >
+                <AppBarToggleButton.Icon>
+                    <FontIcon Glyph="&#xE1E2;" FontFamily="ms-appx:///Assets/Fonts/winjs-symbols.ttf#Symbols" />
+                </AppBarToggleButton.Icon>
+            </AppBarToggleButton>
+            <AppBarToggleButton Label="Smierci" >
+                <AppBarToggleButton.Icon>
+                    <FontIcon Glyph="&#xE1E0;" FontFamily="ms-appx:///Assets/Fonts/winjs-symbols.ttf#Symbols" />
+                </AppBarToggleButton.Icon>
+            </AppBarToggleButton>
+            <AppBarSeparator/>
+            <AppBarButton Label="Ikonka">
+                <AppBarButton.Icon>
+                    <BitmapIcon UriSource="ms-appx:///Assets/ikonka.png" />
+                </AppBarButton.Icon>
+            </AppBarButton>
+            <CommandBar.SecondaryCommands>
+                <AppBarButton Label="Settings"  >
+                    <AppBarButton.Icon>
+                        <FontIcon Glyph="&#xE115;" FontFamily="ms-appx:///Assets/Fonts/winjs-symbols.ttf#Symbols" />
+                    </AppBarButton.Icon>
+                </AppBarButton>
+                <AppBarButton Label="Info" >
+                    <AppBarButton.Icon>
+                        <FontIcon Glyph="&#xE11B;" FontFamily="ms-appx:///Assets/Fonts/winjs-symbols.ttf#Symbols" />
+                    </AppBarButton.Icon>
+                </AppBarButton>
+           </CommandBar.SecondaryCommands>
+        </CommandBar>
+
+        <TextBlock Grid.Row="3" Text="Ponizej CommandBar normalny" />
+        <CommandBar Grid.Row="4" ClosedDisplayMode="Compact" >
+            <CommandBar.Content>
+                <TextBlock Text="Kontent" Margin="20,10,0,10" />
+            </CommandBar.Content>
+            <AppBarSeparator/>
+            <AppBarButton Icon="Refresh" Label="Wczytaj" />
+            <AppBarButton Icon="Calendar" Label="Kalendarz" >
+                <AppBarButton.Flyout>
+                    <Flyout >
+                        <DatePicker />
+                    </Flyout>
+                </AppBarButton.Flyout>
+            </AppBarButton>
+            <AppBarSeparator/>
+            <AppBarToggleButton Icon="Globe" Label="Wydarzenia" />
+            <AppBarToggleButton Icon="OutlineStar" Label="Swieta" />
+            <AppBarToggleButton Icon="AddFriend" Label="Urodziny" />
+            <AppBarToggleButton Icon="BlockContact" Label="Smierci" />
+            <AppBarSeparator/>
+            <AppBarButton Label="Ikonka">
+                <AppBarButton.Icon>
+                    <BitmapIcon UriSource="ms-appx:///Assets/ikonka.png" />
+                </AppBarButton.Icon>
+            </AppBarButton>
+            <CommandBar.SecondaryCommands>
+                <AppBarButton Icon="Setting" Label="Settings"  />
+                <AppBarButton Icon="Help" Label="Info" />
+            </CommandBar.SecondaryCommands>
+        </CommandBar>
+
+
+        
+        <TextBlock Grid.Row="5" Text="Ponizej AppBar" />
+
+        <AppBar Grid.Row="6" Name="uiCmdBar" ClosedDisplayMode="Compact" >
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="2*" />
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="Kontent App" Margin="20,0,0,0" VerticalAlignment="Center" />
+                <StackPanel Orientation="Horizontal" Grid.Column="1">
+                    <AppBarButton Label="Wlasna Ikona" >
+                        <AppBarButton.Icon>
+                            <FontIcon FontFamily="ms-appx:///Assets/Fonts/winjs-symbols.ttf#Symbols" Glyph="&#xE14A;"/>
+                        </AppBarButton.Icon>
+                    </AppBarButton>
+                    <AppBarButton Icon="Calendar" Label="Zwykly AppBB" >
+                    </AppBarButton>
+                    <AppBarSeparator/>
+                    <AppBarToggleButton Icon="Globe" Label="Wydarzenia"  />
+                    <AppBarButton Label="Ikonka">
+                        <AppBarButton.Icon>
+                            <BitmapIcon UriSource="ms-appx:///Assets/ikonka.png" />
+                        </AppBarButton.Icon>
+                    </AppBarButton>
+                </StackPanel>
+            </Grid>
+        </AppBar>
+
+        <TextBlock Grid.Row="7" Text="przerwa pomiedzy wewnatrz Page i BottomBarem" />
+
+    </Grid>
+    <Page.BottomAppBar>
+        <CommandBar Grid.Row="1" ClosedDisplayMode="Compact"  >
+            <!-- Padding="20,20,20,-50" MinHeight="250" Margin="0,0,0,50" -->
+            <CommandBar.Content>
+                <TextBlock Text="Kontent Bottom" Margin="20,10,0,10" />
+            </CommandBar.Content>
+            <CommandBar.PrimaryCommands>
+                <AppBarButton Icon="Refresh" Label="Wczytaj" />
+                <AppBarButton Icon="Calendar" Label="Kalendarz" >
+                </AppBarButton>
+                <AppBarSeparator />
+                <AppBarToggleButton Icon="Globe" Label="Wydarzenia"  />
+            </CommandBar.PrimaryCommands>
+            <CommandBar.SecondaryCommands>
+                <AppBarButton Icon="Refresh" Label="Wczytaj" />
+                <AppBarButton Icon="Calendar" Label="Kalendarz" >
+                </AppBarButton>
+                <AppBarSeparator />
+                <AppBarToggleButton Icon="Globe" Label="Wydarzenia"  />
+                <AppBarToggleButton Icon="AddFriend" Label="Urodziny" />
+                <AppBarToggleButton Icon="BlockContact" Label="Smierci" />
+                <AppBarSeparator/>
+                <AppBarButton Icon="Setting" Label="Settings"  />
+                <AppBarButton Icon="Help" Label="Info"  />
+            </CommandBar.SecondaryCommands>
+        </CommandBar>
+
+    </Page.BottomAppBar>
+</Page>
