@@ -13,13 +13,9 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
-// The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
-
 namespace testAppBar
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
+
     public sealed partial class MainPage : Page
     {
 
@@ -30,36 +26,33 @@ namespace testAppBar
             (Application.Current as App).UnhandledException += GlobalError;
         }
 
+
+        // breakpoint wstawiać na wąs (nawias) otwierający funkcję
+
         private void GlobalError(object sender, Windows.UI.Xaml.UnhandledExceptionEventArgs e)
         {
             // e.Handled = True    ' // prevent the application from crashing
-            string sTxt = "Global catch: ";
+            MsgBox("Global catch:");
         }
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            //uiCalDatPick.Date = DateTimeOffset.Now;
         }
 
         private void uiGlobe_Click(object sender, RoutedEventArgs e)
         {
-
-            Windows.UI.Popups.MessageDialog oMsg = new Windows.UI.Popups.MessageDialog("nacisniety GLOBE");
-            oMsg.ShowAsync();
+            MsgBox("nacisniety GLOBE");
         }
 
         private void WcisnietoCzytaj(object sender, RoutedEventArgs e)
         {
-            Windows.UI.Popups.MessageDialog oMsg = new Windows.UI.Popups.MessageDialog("nacisniety jestem");
-            oMsg.ShowAsync();
-            //uiKalendarzName.Visibility = Visibility.Collapsed;
+            MsgBox("nacisniety jestem");
         }
 
         private void uiClicked(object sender, RoutedEventArgs e)
         {
-            // tylko po to, by móc złapać w trakcie działania do testowania
-            int i;
-            i = 10;
+            MsgBox("uiClicked");
+
             //CommandBar commandBar; // są tylko AppBar (nie ma Toggle) i tylko z SecondaryCommands
             //AppBar appBar;  // są buttony i działają, ale nie ma ikonek
             //AppBarButton appBarButton;
@@ -80,22 +73,19 @@ namespace testAppBar
         //{
         //    throw new NotImplementedException();
         //}
-        private async void bEvent_Click(object sender, RoutedEventArgs e)
+        private  void bEvent_Click(object sender, RoutedEventArgs e)
         {
-            MenuFlyoutItem mfi;
-
-            int i = 0;
+            MsgBox("bEvent_Click");
         }
-            private async void bBirth_Click(object sender, RoutedEventArgs e)
+            private  void bBirth_Click(object sender, RoutedEventArgs e)
         {
-            int i = 0;
-
+            MsgBox("bBirth_Click");
         }
-        private async void bDeath_Click(object sender, RoutedEventArgs e)
+        private  void bDeath_Click(object sender, RoutedEventArgs e)
         {
-            int i = 0;
+            MsgBox("bDeath_Click");
         }
-        private async void uiClicked1(object sender, RoutedEventArgs e)
+        private  void uiClicked1(object sender, RoutedEventArgs e)
         {
 
             uiWeb.NavigateToString("<html><body><p>test znacznei dluzszy</body><html>");
@@ -124,6 +114,15 @@ namespace testAppBar
 
 
         }
+
+        private void MsgBox(string sMsg)
+        {
+            Windows.UI.Popups.MessageDialog oMsg = new Windows.UI.Popups.MessageDialog(sMsg);
+#pragma warning disable CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
+            oMsg.ShowAsync();
+#pragma warning restore CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
+        }
+
     }
 
 }
